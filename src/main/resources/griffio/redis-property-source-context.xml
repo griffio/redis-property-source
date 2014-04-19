@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="redisPropertySource" class="griffio.env.RedisPropertySource">
+        <constructor-arg ref="redisClient"/>
+    </bean>
+
+    <bean id="redisClient" class="griffio.redis.RedisClient">
+        <constructor-arg ref="jedisPool"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg value="localhost"/>
+    </bean>
+
+</beans>
